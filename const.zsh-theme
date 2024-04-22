@@ -37,9 +37,13 @@ ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX="↑"
 ZSH_THEME_GIT_COMMITS_BEHIND_SUFFIX="↓"
 
 PROMPT="${FG[237]}\${(l.\$(dashes)..-.)}%{$reset_color%}$FG[141]
-%(?:%{$FG[105]%}%d:%{$FG[124]%}%d)
+%(?:%{$FG[105]%}%d:%{$FG[105]%}%d)
 %(?:%{$FG[105]%}:%{$FG[214]%})➜"
-PROMPT+=' %{$FG[075]%}%c%{$reset_color%} $(git_prompt_info) $(git_commits_behind)$(git_commits_ahead)$(git_prompt_status)
+PROMPT+=' %(?:%{$FG[075]%}%c:%{$FG[124]%}%c)%{$reset_color%} $(git_prompt_info) $(git_commits_behind)$(git_commits_ahead)$(git_prompt_status)
 $FG[078]# %{$reset_color%}'
 
-RPROMPT=" ${FG[237]}%* %n@%m%{$reset_color%}"
+RPROMPT="%(?..%{$FG[124]%}%? ↵%{$reset_color%})"
+if (( $+functions[virtualenv_prompt_info] )); then
+  RPROMPT+='$(virtualenv_prompt_info)'
+fi
+RPROMPT+=" ${FG[237]}%* %n@%m%{$reset_color%}"
