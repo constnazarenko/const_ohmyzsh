@@ -1,5 +1,7 @@
 # const_ohmyzsh
 My custom theme for Oh-my-zsh
+Shows in clear and verbose manner the current state of git:
+![The demo screenshot](./screenshot.png)
 
 ## Installation
 
